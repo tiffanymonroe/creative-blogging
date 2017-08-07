@@ -29,7 +29,7 @@ router.get('/new', (req, res)=>{
 router.get('/:id', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
     console.log("================================");
-    console.log(req.params.id);
+    console.log(req.body);
     res.render('students/show.ejs', {
       student: foundStudent
     });

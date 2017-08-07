@@ -49,6 +49,8 @@ router.post('/register', (req, res)=>{
   const userDbEntry = {};
   userDbEntry.username = req.body.username;
   userDbEntry.password = passwordHash
+  userDbEntry.firstName = req.body.firstName;
+  userDbEntry.lastName = req.body.lastName;
 
   //put password in db
   Student.create(userDbEntry, (err, user)=>{
@@ -57,7 +59,7 @@ router.post('/register', (req, res)=>{
   //setup session with login info
   req.session.username = user.username;
   req.session.logged = true;
-  res.redirect('/students')
+  res.redirect('/students/:id')
   });
 });
 
