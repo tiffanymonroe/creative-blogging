@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user.js');
+const Student = require('../models/students.js');
 const bcrypt = require('bcryptjs');
 
 //Login Route
 router.get('/login', (req, res)=>{
-  res.render('users/login.ejs', {message: req.session.message || ""})
+  res.render('students/login.ejs', {message: req.session.message || ""})
 });
 
 //Register Route
 router.get('/register', (req, res)=>{
-  res.render('users/register.ejs', {})
+  res.render('students/register.ejs', {})
 });
 
 //Verify Login
 
 router.post('/login', (req, res)=>{
-  User.findOne({email: req.body.email}, (err, user)=>{
+  Student.findOne({email: req.body.email}, (err, user)=>{
     if(user){
 
       if(bcrypt.compareSync(req.body.password, user.password)){
@@ -51,7 +51,7 @@ router.post('/register', (req, res)=>{
   userDbEntry.password = passwordHash
 
   //put password in db
-  User.create(userDbEntry, (err, user)=>{
+  Student.create(userDbEntry, (err, user)=>{
     console.log(user);
 
   //setup session with login info
