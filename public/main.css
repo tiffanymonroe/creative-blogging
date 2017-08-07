@@ -1,0 +1,32 @@
+/** {
+  border: 1px solid hotpink;
+}*/
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Give You Glory', cursive;
+}
+
+.main-img {
+  width: 100%;
+  height: auto;
+}
+
+.main-nav {
+  margin-top: 70%;
+  margin-bottom: 25%;
+  text-align: center;
+}
+
+.btn.btn-default {
+  background-color: #38676D;
+  color: white;
+}
+
+.profiles {
+  text-align: center;
+
+}
