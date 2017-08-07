@@ -59,7 +59,7 @@ router.post('/register', (req, res)=>{
   //setup session with login info
   req.session.username = user.username;
   req.session.logged = true;
-  res.redirect('/students/:id')
+  res.redirect('/students/:id/edit')
   });
 });
 
