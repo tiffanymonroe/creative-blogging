@@ -16,7 +16,7 @@ router.get('/register', (req, res)=>{
 //Verify Login
 
 router.post('/login', (req, res)=>{
-  Student.findOne({email: req.body.email}, (err, user)=>{
+  Student.findOne({email: req.body.username}, (err, user)=>{
     if(user){
 
       if(bcrypt.compareSync(req.body.password, user.password)){
@@ -59,7 +59,7 @@ router.post('/register', (req, res)=>{
   //setup session with login info
   req.session.username = user.username;
   req.session.logged = true;
-  res.redirect('/students/:id/edit')
+  res.redirect('/students/:id')
   });
 });
 
