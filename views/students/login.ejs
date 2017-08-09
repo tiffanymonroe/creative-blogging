@@ -8,7 +8,7 @@
       <div class="col-xs-4 col-xs-offset-4" style="margin-top: 15%">
         <h1>Student Login</h1>
 
-        <form action="/sessions/login" method="POST">
+        <form action="/students/login" method="POST">
           <div class="form-group">
             <label for="username">Email:</label>
             <input type="text" name="username" value="" class="form-control">
@@ -20,9 +20,12 @@
           <br/>
           <button class="btn btn-default">Login</button>
         </form>
+        <div class="error-message">
         <% if (message) { %>
           <%= message %>
+          <a href="/students/register">Register</a>
         <% } %>
+      </div>
       </div>
     </div>
 

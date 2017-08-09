@@ -8,8 +8,9 @@ const session = require('express-session');
 
 //Middleware
 app.use(express.static('public'));
-app.use(methodOverride('_method'));
+
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 app.use(session({
     secret: "this is a random string secret",
     resave: false,
@@ -23,8 +24,6 @@ app.use('/students', studentsController);
 const wikiController = require('./controllers/wiki.js');
 app.use('/wiki', wikiController);
 
-const sessionsController = require('./controllers/sessions.js');
-app.use('/sessions', sessionsController);
 
 //Index Route
 app.get('/', (req, res)=>{

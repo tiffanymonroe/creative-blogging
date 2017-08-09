@@ -12,10 +12,6 @@
         <div class="col-xs-8">
           <table class="table table-responsive table-bordered">
             <tr>
-              <th>Year: </th>
-              <td> <%=student.year%> </td>
-            </tr>
-            <tr>
               <th>Major: </th>
               <td> <%=student.major%> </td>
             </tr>
@@ -34,7 +30,7 @@
           </table>
         </div>
 
-        <a href="/students/:id/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a href="/students/<%=student.id%>/edit"><span class="glyphicon glyphicon-pencil"></span></a>
 
       </div>
     </div>
