@@ -48,6 +48,7 @@ router.get('/register', (req, res)=>{
   res.render('students/register.ejs', {})
 });
 
+//Create Route
 
 router.post('/register', (req, res)=>{
   //hash password
@@ -72,9 +73,19 @@ router.post('/register', (req, res)=>{
   });
 });
 
-//Create Route
 
 //Show Route (if logged in)
+router.get('/:id', (req, res)=>{
+  Student.findById(req.params.id, (err, foundStudent)=>{
+    if (req.session.logged === true){
+    res.render('students/show.ejs', {
+    student: foundStudent })
+  } else {
+      res.redirect('/students/login')
+  }
+  });
+});
+
 
 //Edit Route (logged in, correct id)
 
