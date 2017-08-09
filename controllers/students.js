@@ -3,6 +3,16 @@ const router = express.Router();
 const Student = require('../models/students.js');
 const bcrypt = require('bcryptjs');
 
+
+//Index Route
+router.get('/', (req, res)=>{
+  Student.find({}, (err, foundStudents)=>{
+    res.render('students/index.ejs', {
+      students: foundStudents
+    });
+  });
+});
+
 //Login Route
 router.get('/login', (req, res)=>{
   res.render('students/login.ejs', {
@@ -29,17 +39,37 @@ router.post('/login', (req, res)=>{
   });
 });
 
-//Index Route
-router.get('/', (req, res)=>{
 
-  res.render('students/index.ejs')
-})
 
 
 //New Route (Registration)
 
 router.get('/register', (req, res)=>{
   res.render('students/register.ejs', {})
+});
+
+
+router.post('/register', (req, res)=>{
+  //hash password
+  const password = req.body.password;
+  const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
+  //creat db entry
+  const userDbEntry = {};
+  userDbEntry.firstName = req.body.firstName;
+  userDbEntry.lastName = req.body.lastName;
+  userDbEntry.username = req.body.username;
+  userDbEntry.password = passwordHash;
+
+  //put password into db
+  Student.create(userDbEntry, (err, student)=>{
+    console.log(student + " has been added to the database.");
+
+    //session
+    req.session.username = student.username;
+    req.session.logged = true;
+    res.redirect('/students')
+  });
 });
 
 //Create Route
