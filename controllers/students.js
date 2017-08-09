@@ -92,12 +92,19 @@ router.get('/:id', (req, res)=>{
 //Edit Route (logged in, correct id)
 router.get('/:id/edit', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
+    console.log("The error is : " + err);
+    console.log(foundStudent);
+    console.log("==================");
+  
     res.render('students/edit.ejs', {
       student: foundStudent
     });
   });
 });
+
 //Update Route
+
+
 
 //Delete (only wiki posts, blog entries)
 
