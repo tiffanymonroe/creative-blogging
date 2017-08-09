@@ -77,18 +77,26 @@ router.post('/register', (req, res)=>{
 //Show Route (if logged in)
 router.get('/:id', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
-    if (req.session.logged === true){
+
+  //   if (req.session.logged === true){
     res.render('students/show.ejs', {
-    student: foundStudent })
-  } else {
-      res.redirect('/students/login')
-  }
+    student: foundStudent }
+)
+  // } else {
+  //     res.redirect('/students/login')
+  // }
   });
 });
 
 
 //Edit Route (logged in, correct id)
-
+router.get('/:id/edit', (req, res)=>{
+  Student.findById(req.params.id, (err, foundStudent)=>{
+    res.render('students/edit.ejs', {
+      student: foundStudent
+    });
+  });
+});
 //Update Route
 
 //Delete (only wiki posts, blog entries)
