@@ -36,8 +36,11 @@ router.get('/', (req, res)=>{
 })
 
 
-
 //New Route (Registration)
+
+router.get('/register', (req, res)=>{
+  res.render('students/register.ejs', {})
+});
 
 //Create Route
 
