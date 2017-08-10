@@ -1,5 +1,6 @@
 //dependencies
 const mongoose = require('mongoose');
+const Wiki = require('../models/wiki.js');
 
 const studentSchema = new mongoose.Schema({
   username: String,
@@ -10,7 +11,8 @@ const studentSchema = new mongoose.Schema({
   major: {type: String, default:""},
   about: {type: String, default:""},
   course: {type: String, default:""},
-  genre: {type: String, default:""}
+  genre: {type: String, default:""},
+  posts: [Wiki.schema]
 
 });
 

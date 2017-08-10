@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 const wikiSchema = new mongoose.Schema({
   title: String,
-  article: String
+  article: String,
+  sources: String
 })
 
 const Wiki = mongoose.model('Wiki', wikiSchema);

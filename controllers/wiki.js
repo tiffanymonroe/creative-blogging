@@ -6,7 +6,20 @@ const Student = require('../models/students.js');
 
 //Index Route
 router.get('/', (req, res)=>{
-  res.render('wiki/index.ejs');
+  Wiki.find((err, foundWikis)=>{
+    res.render('wiki/index.ejs', {
+      wikis: foundWikis
+    });
+  });
+});
+
+//New Route
+router.get('/new', (req, res)=>{
+  Student.find((err, allStudents)=>{
+    res.render('wiki/new.ejs', {
+      students: allStudents
+    });
+  });
 });
 
 
