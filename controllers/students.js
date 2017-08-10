@@ -6,7 +6,8 @@ const bcrypt = require('bcryptjs');
 
 //Index Route
 router.get('/', (req, res)=>{
-  Student.find({}, (err, foundStudents)=>{
+  console.log('index route accessed');
+  Student.find((err, foundStudents)=>{
     res.render('students/index.ejs', {
       students: foundStudents
     });
@@ -77,11 +78,14 @@ router.post('/register', (req, res)=>{
 //Show Route (if logged in)
 router.get('/:id', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
-
+    console.log("The show route has been accessed.");
+    // if (err) throw err
   //   if (req.session.logged === true){
+    console.log(foundStudent);
+    if (err) console.log(err);
     res.render('students/show.ejs', {
-    student: foundStudent }
-)
+      student: foundStudent
+    });
   // } else {
   //     res.redirect('/students/login')
   // }
@@ -91,11 +95,9 @@ router.get('/:id', (req, res)=>{
 
 //Edit Route (logged in, correct id)
 router.get('/:id/edit', (req, res)=>{
+  console.log('edit route accessed');
   Student.findById(req.params.id, (err, foundStudent)=>{
-    console.log("The error is : " + err);
-    console.log(foundStudent);
-    console.log("==================");
-  
+    console.log('foundStudent in edit route: ', foundStudent);
     res.render('students/edit.ejs', {
       student: foundStudent
     });
@@ -103,6 +105,12 @@ router.get('/:id/edit', (req, res)=>{
 });
 
 //Update Route
+router.put('/:id', (req, res)=>{
+  Student.findByIdAndUpdate(req.params.id, req.body, (err, student)=>{
+
+    res.redirect('/students/' + student.id);
+  });
+});
 
 
 

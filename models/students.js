@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const studentSchema = new mongoose.Schema({
   username: String,
   password: String,
-  img: String,
+  img: {type: String, default:""},
   firstName: String,
   lastName: String,
-  major: String,
-  about: String,
-  course: String,
-  genre: String
+  major: {type: String, default:""},
+  about: {type: String, default:""},
+  course: {type: String, default:""},
+  genre: {type: String, default:""}
 
 });
 
