@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Student = require('../models/students.js');
+const Wiki = require('../models/wiki.js');
 const bcrypt = require('bcryptjs');
 
 
@@ -107,14 +108,20 @@ router.get('/:id/edit', (req, res)=>{
 //Update Route
 router.put('/:id', (req, res)=>{
   Student.findByIdAndUpdate(req.params.id, req.body, (err, student)=>{
-
     res.redirect('/students/' + student.id);
   });
 });
 
 
 
-//Delete (only wiki posts, blog entries)
+//Delete
+router.delete('/:id', (req, res)=>{
+  console.log("delete route has been accessed");
+  Student.findByIdAndRemove(req.params.id, (err, foundStudent)=>{
+          res.redirect('/students');
+
+  });
+});
 
 
 module.exports = router;
