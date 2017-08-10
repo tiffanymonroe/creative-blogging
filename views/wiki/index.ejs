@@ -21,20 +21,26 @@
 
       <div class="row">
         <div class="col-xs-8">
-          <section class="welcome">
+          <section class="jumbotron welcome">
             <h2>Welcome to the class Wiki!</h2>
             <h4>Here, we're building on course texts and class discussions. The goal is to have a student-created resource for the course. You can already find articles on poetry, fiction, and writing that I've mentioned in class.</h4>
 
             <h4>You are required to submit either 1 full article or contribute to 3 during the course of the semester. Find a great writing exercise? Awesome! Add it to the wiki, under "Writing Exercises." Love a particular poet or author? Make sure they have an article under "Writers." This is your space. Have fun with it!</h4>
+            <br/>
+            <p><a class="btn btn-info btn-lg" role="button" href="/wiki/new">Add an Article</a></p>
           </section>
+
 
         </div>
 
         <div class="col-xs-4">
           <img class="wiki-img img-responsive img-thumbnail" src="https://static.pexels.com/photos/316465/pexels-photo-316465.jpeg" alt="create"/>
-          <center>
-          <h2><a href="/wiki/new">Add an Article</a></h2>
-        </center>
+
+          <section class="post-list">
+            <% for (let i=0; i < wikis.length; i++){ %>
+              <a href="/wiki/<%=wikis[i].title%>"><%=wikis[i].title%></a>
+            <% } %>
+          </section>
         </div>
 
       </div>

@@ -15,12 +15,43 @@ router.get('/', (req, res)=>{
 
 //New Route
 router.get('/new', (req, res)=>{
+  console.log("new route has been accessed");
   Student.find((err, allStudents)=>{
     res.render('wiki/new.ejs', {
       students: allStudents
     });
   });
 });
+
+//Create Route
+router.post('/', (req, res)=>{
+  console.log("create route has been accessed");
+  Student.findById(req.body.studentId, (err, foundStudent)=>{
+      console.log(err);
+    Wiki.create(req.body, (err, createdWiki)=>{
+        console.log(err);
+      foundStudent.wiki.push(createdWiki);
+      foundStudent.save((err, data)=>{
+        res.redirect('/wiki');
+      });
+    });
+  });
+});
+
+//Show Route
+router.get('/:id', (req, res)=>{
+  console.log("-----------------");
+  console.log("show route has been accessed");
+  Wiki.findById(req.params.id, (err, foundWiki)=>{
+    Student.findOne({'wiki._id':req.params.id}, (err, foundStudent)=>{
+      res.render('wiki/show.ejs', {
+        student: foundStudent,
+        wiki: foundWiki
+      });
+    });
+  });
+});
+
 
 
 

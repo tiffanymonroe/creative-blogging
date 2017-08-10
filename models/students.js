@@ -12,7 +12,7 @@ const studentSchema = new mongoose.Schema({
   about: {type: String, default:""},
   course: {type: String, default:""},
   genre: {type: String, default:""},
-  posts: [Wiki.schema]
+  wiki: [Wiki.schema]
 
 });
 
