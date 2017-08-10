@@ -120,7 +120,6 @@ router.delete('/:id', (req, res)=>{
   console.log("delete route has been accessed");
   Student.findByIdAndRemove(req.params.id, (err, foundStudent)=>{
           res.redirect('/students');
-
   });
 });
 
