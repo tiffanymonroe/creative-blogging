@@ -6,6 +6,12 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.navbar-default, .nav, .navbar-default .navbar-text, .navbar-link, .glyphicon.glyphicon-home  {
+  padding-top: .5rem;
+  background-color: #38676D;
+  color: white;
+}
+
 h1, h2 {
   font-family: 'Give You Glory', cursive;
 }
@@ -47,6 +53,8 @@ a:hover {
 
 .wiki-nav {
   vertical-align: bottom;
+  background-color: white;
+  color: black;
 }
 
 .wiki-img {

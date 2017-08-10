@@ -4,11 +4,12 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
+    <% include ../partials/nav.ejs %>
     <div class="container">
       <div class="row wiki-header">
         <nav class="wiki-nav">
           <div class="container">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-justified wiki-nav">
               <li role="presentation"><a href="#">Writing</a></li>
               <li role="presentation"><a href="#">Poetry</a></li>
               <li role="presentation"><a href="#">Fiction</a></li>
@@ -27,7 +28,7 @@
 
             <h4>You are required to submit either 1 full article or contribute to 3 during the course of the semester. Find a great writing exercise? Awesome! Add it to the wiki, under "Writing Exercises." Love a particular poet or author? Make sure they have an article under "Writers." This is your space. Have fun with it!</h4>
             <br/>
-            <p><a class="btn btn-info btn-lg" role="button" href="/wiki/new">Add an Article</a></p>
+            <p><a class="btn btn-default btn-lg" role="button" href="/wiki/new">Add an Article</a></p>
           </section>
 
 

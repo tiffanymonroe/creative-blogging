@@ -4,10 +4,11 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
+  <% include ../partials/nav.ejs %>
     <div class="container">
       <div class="col-xs-4 col-xs-offset-4" style="margin-top: 15%">
         <h1>Student Login</h1>
-        <a href="/students/register">Register</a>
+
         <form action="/students/login" method="POST">
           <div class="form-group">
             <label for="username">Email:</label>
@@ -19,6 +20,9 @@
           </div>
           <br/>
           <button class="btn btn-default">Login</button>
+          <br/>
+          <br/>
+          <button class="btn btn-default"><a href="/students/register">Register</a></button>
         </form>
         <div class="error-message">
         <% if (message) { %>

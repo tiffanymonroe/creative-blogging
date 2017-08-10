@@ -4,6 +4,7 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
+    <% include ../partials/nav.ejs %>
     <div class="container">
 
     <form class="col-xs-6 col-xs-offset-3" action="/students/<%=student._id%>?_method=PUT" method="post">
