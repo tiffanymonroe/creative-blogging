@@ -38,9 +38,11 @@
           <img class="wiki-img img-responsive img-thumbnail" src="https://static.pexels.com/photos/316465/pexels-photo-316465.jpeg" alt="create"/>
 
           <section class="post-list">
-            <% for (let i=0; i < wikis.length; i++){ %>
-              <a href="/wiki/<%=wikis[i].id%>"><%=wikis[i].title%></a>
-            <% } %>
+            <ul>
+              <% for (let i=0; i < wikis.length; i++){ %>
+              <li>  <a href="/wiki/<%=wikis[i].id%>"><%=wikis[i].title%></a> </li>
+              <% } %>
+            </ul>
           </section>
         </div>
 
