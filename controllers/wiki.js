@@ -52,6 +52,44 @@ router.get('/:id', (req, res)=>{
   });
 });
 
+//Delete Route
+
+router.delete('/:id', (req, res)=>{
+  Wiki.findByIdAndRemove(req.params.id, (err, foundWiki)=>{
+    Student.findOne({'wiki._id':req.params.id}, (err, foundStudent)=>{
+      foundStudent.wiki.id(req.params.id).remove();
+      foundStudent.save((err, data)=>{
+        res.redirect('/wiki')
+      });
+    });
+  });
+});
+
+//Update Route
+
+router.put('/:id', (req, res)=>{
+  Wiki.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedWiki)=>{
+    Student.findOne({'wiki._id':req.params.id}, (err, foundStudent)=>{
+      if(foundStudent._id.toString() !== req.body.studentId){
+        foundStudent.wiki.id(req.params.id).remove();
+        foundStudent.save((err, saveFoundStudent)=>{
+          Student.findById(req.body.studentId, (err, newStudent)=>{
+            newStudent.wiki.push(updatedWiki);
+            newStudent.save((err, savedNewStudent)=>{
+              res.redirect('/wiki/' +req.params.id);
+            });
+          });
+        });
+      } else {
+          foundStudent.wiki.id(req.params.id).remove();
+          foundStudent.wiki.push(updatedWiki);
+          foundStudent.save((err, data)=>{
+            res.redirect('/wiki/' +req.params.id);
+          });
+      }
+    });
+  });
+});
 
 
 

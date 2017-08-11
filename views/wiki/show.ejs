@@ -6,11 +6,23 @@
   <body>
     <% include ../partials/nav.ejs %>
     <div class="container">
-      <%=wiki.title%>
-      <br/>
-      by: <%=student.firstName%> <%=student.lastName%>
-      <br/>
-      <%=wiki.article%>
-    </div>
+      <div class="row">
+        <div class="col-xs-12">
+            <%=wiki.title%>
+            <br/>
+            by: <a href="<%=student.id%>"><%=student.firstName%> <%=student.lastName%></a>
+            <br/>
+            <%=wiki.article%>
+          </div>
+            <div class="row">
+              <div class="col-xs-12">
+                  <a class="btn btn-default crud" href="/wiki/<%=wiki.id%>/edit">Edit</a>
+                  <form action="/wiki/<%=wiki._id%>?_method=DELETE" method="post">
+                    <input class="btn btn-default" type="submit" value="Delete"/>
+                  </form>
+              </div>
+        </div>
+      </div>
+  </div>
   </body>
 </html>

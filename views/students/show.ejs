@@ -11,6 +11,7 @@
           <h1><%=student.firstName%> <%=student.lastName%></h1>
         </div>
         <div class="col-xs-8">
+          <img class="show-images img-thumbnail" src="<%=student.img%>"/>
           <table class="table table-responsive table-bordered">
             <tr>
               <th>Major: </th>
@@ -30,13 +31,22 @@
             </tr>
           </table>
         </div>
+        <div class="col-xs-4">
+          <h2>Wiki Articles</h2>
+          <% for (i = 0; i < student.wiki.title; i++){%>
+            <a href="<%=wiki.id[i]%>"><%=student.wiki.title[i]%></a>
+          <%}%>
+        </div>
 
-        <a href="/students/<%=student.id%>/edit"><span class="glyphicon glyphicon-pencil"></span></a>
-        <form action="/students/<%=student._id%>?_method=DELETE" method="post">
-          <input type="submit" value="Delete"/>
-        </form>
+        <div class="row">
+          <div class="col-xs-12">
+              <a class="btn btn-default crud" href="/students/<%=student.id%>/edit">Edit</a>
+              <form action="/students/<%=student._id%>?_method=DELETE" method="post">
+                <input class="btn btn-default" type="submit" value="Delete"/>
+              </form>
+          </div>
+        </div>
 
-      </div>
     </div>
   </body>
 </html>

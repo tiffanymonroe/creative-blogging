@@ -6,16 +6,6 @@ const Wiki = require('../models/wiki.js');
 const bcrypt = require('bcryptjs');
 
 
-//Index Route
-router.get('/', (req, res)=>{
-  console.log('index route accessed');
-  Student.find((err, foundStudents)=>{
-    res.render('students/index.ejs', {
-      students: foundStudents
-    });
-  });
-});
-
 //Login Route
 router.get('/login', (req, res)=>{
   res.render('students/login.ejs', {
@@ -77,20 +67,28 @@ router.post('/register', (req, res)=>{
 });
 
 
+//Index Route
+router.get('/', (req, res)=>{
+  console.log('index route accessed');
+  Student.find((err, foundStudents)=>{
+      res.render('students/index.ejs', {
+        students: foundStudents,
+      });
+  });
+});
+
+
+
 //Show Route (if logged in)
 router.get('/:id', (req, res)=>{
   Student.findById(req.params.id, (err, foundStudent)=>{
     console.log("The show route has been accessed.");
-    // if (err) throw err
-  //   if (req.session.logged === true){
+
     console.log(foundStudent);
     if (err) console.log(err);
     res.render('students/show.ejs', {
       student: foundStudent
     });
-  // } else {
-  //     res.redirect('/students/login')
-  // }
   });
 });
 

@@ -4,6 +4,8 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
+    <% include ../partials/nav.ejs %>
+
     <div class="container">
       <div class="row">
         <div class="col-xs-12 profiles">
@@ -12,11 +14,18 @@
       </div>
         <!-- page of images linked to individual profiles -->
       <div class="row">
-        <div class="col-xs-8">
-          <% for (let i = 0; i < students.length; i++){ %>
-            <a href="/students/<%=students[i].id%>">  <%=students[i].firstName%> <%=students[i].lastName%> </a>
-          <% } %>
-        </div>
+
+            <div class="col-xs-8 ">
+            <% for (let i = 0; i < students.length; i++){ %>
+              <section>
+              <a href="/students/<%=students[i].id%>">
+              <img class="img-responsive img-thumbnail index-images" src="<%=students[i].img%>"/></a>
+              </section>
+              <section>
+                <%=students[i].firstName%> <%=students[i].lastName%>
+                </section>
+            <% } %>
+            </div>
       </div>
     </div>
   </body>

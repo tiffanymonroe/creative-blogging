@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(session({
-    secret: "this is a random string secret",
+    secret: "english 204",
     resave: false,
     saveUninitialized: false
 }));
@@ -25,10 +25,24 @@ const wikiController = require('./controllers/wiki.js');
 app.use('/wiki', wikiController);
 
 
+
+
 //Index Route
 app.get('/', (req, res)=>{
   res.render('index.ejs')
 });
+
+
+// Seed Data
+// const Student = require('./models/students.js');
+// const seedData = require('./models/seed_data.js')
+// Student.collection.insertMany(seedData, (error, data) => {
+//   console.log('seeded data');
+//   mongoose.connection.close();
+// });
+
+
+
 
 
 //Connections
