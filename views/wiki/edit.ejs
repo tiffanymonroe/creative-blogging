@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../partials/nav.ejs %>
+    <div class="container">
+      <div class="add-container col-xs-6 col-xs-offset-3">
+
+        <form class="wiki-add" action="/wiki/<%=wiki._id%>?_method=PUT" method="post">
+          <select name="studentId">
+            <% for (let i=0; i < students.length; i++){ %>
+              <option value="<%=students[i]._id%>"><%=students[i].firstName%> <%=students[i].lastName%></option>
+            <% } %>
+          </select>
+              <br/>
+              <br/>
+          <label for="title">Title:</label>
+              <br/>
+          <input type="text" class="form-control" name="title" placeholder="<%=wiki.title%>">
+              <br/>
+          <label for="article">Article:</label>
+              <br/>
+          <textarea class="form-control" rows="5" name="article" placeholder="<%=wiki.article%>"></textarea>
+              <br/>
+          <input class="btn btn-default" role="button" type="submit" value="Submit"/>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

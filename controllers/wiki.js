@@ -52,6 +52,21 @@ router.get('/:id', (req, res)=>{
   });
 });
 
+//Edit Route
+router.get('/:id/edit', (req, res)=>{
+  Wiki.findById(req.params.id, (err, foundWiki)=>{
+    Student.find((err, allStudents)=>{
+      Student.findOne({'wiki._id': req.params.id}, (err, foundWikiStudent)=>{
+        res.render('wiki/edit.ejs', {
+          wiki: foundWiki,
+          students: allStudents,
+          wikiStudent: foundWikiStudent
+        });
+      });
+    });
+  });
+});
+
 //Delete Route
 
 router.delete('/:id', (req, res)=>{
