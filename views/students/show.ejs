@@ -33,9 +33,11 @@
         </div>
         <div class="col-xs-4">
           <h2>Wiki Articles</h2>
-          <% for (i = 0; i < student.wiki.title; i++){%>
-            <a href="<%=wiki.id[i]%>"><%=student.wiki.title[i]%></a>
-          <%}%>
+          <ul>
+					<% for(let i = 0; i < student.wiki.length; i++){ %>
+						<li><a href="/wiki/<%=student.wiki[i]._id%>"><%=student.wiki[i].title%></a></li>
+					<% } %>
+				</ul>
         </div>
 
         <div class="row">
