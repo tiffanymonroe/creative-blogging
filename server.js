@@ -34,12 +34,12 @@ app.get('/', (req, res)=>{
 
 
 // Seed Data
-const Student = require('./models/students.js');
-const seedData = require('./models/seed_data.js')
-Student.collection.insertMany(seedData, (error, data) => {
-  console.log('seeded data');
-  mongoose.connection.close();
-});
+// const Student = require('./models/students.js');
+// const seedData = require('./models/seed_data.js')
+// Student.collection.insertMany(seedData, (error, data) => {
+//   console.log('seeded data');
+//   mongoose.connection.close();
+// });
 
 
 
