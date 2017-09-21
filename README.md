@@ -1,4 +1,4 @@
-# GA WDI-R Gizmo Project 1
+# GA WDI-R Gizmo Project 2
 # Creative Blogging
 
 ## The Technology
